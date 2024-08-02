@@ -1,6 +1,6 @@
-# Ansible Role: service_user
+# Ansible Role: conf_servicing
 
-Ansible role for initial configuration of an ansible service account
+Ansible role for initial configuration of machines managed by Ansible
 
 ## Role Variables
 

@@ -3,12 +3,6 @@
     name: "{{ service_user_name }}"
     system: true
 
-- name: Gather ansible_os_family if needed
-  when: ansible_os_family is not defined
-  ansible.builtin.setup:
-    filter:
-      - ansible_os_family
-
 - name: Create templated sudoers file for {{ service_user_name }}
   ansible.builtin.template:
     src: debian.j2
