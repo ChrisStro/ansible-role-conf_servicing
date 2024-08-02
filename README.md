@@ -6,5 +6,5 @@ Ansible role for initial configuration of machines managed by Ansible
 
 For available variables see `defaults/main.yml`
 ```yaml
-service_user_name: ansible
+conf_servicing_service_user_name: ansible
 ```
