@@ -7,4 +7,12 @@ Ansible role for initial configuration of machines managed by Ansible
 For available variables see `defaults/main.yml`
 ```yaml
 conf_servicing_service_user_name: ansible
+
+# If you wish to create additionaly sudo accounts
+conf_servicing_sudo_accounts:
+  - name: sudo1
+    pwd: password-for-sudo2 # Pls encrypt !!!
+  - name: sudo2
+    pwd: password-for-sudo2
+    ssh_key_public: ssh-rsa AAAA....
 ```
