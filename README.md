@@ -12,6 +12,7 @@ conf_servicing_service_user_name: ansible
 conf_servicing_sudo_accounts:
   - name: sudo1
     pwd: password-for-sudo2 # Pls encrypt !!!
+    ssh_key_public: https://github.com/GITHUBUSER.keys
   - name: sudo2
     pwd: password-for-sudo2
     ssh_key_public: ssh-rsa AAAA....

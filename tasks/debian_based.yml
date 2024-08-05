@@ -14,7 +14,7 @@
 - name: Create additionally sudo accounts
   when: conf_servicing_sudo_accounts is defined
   block:
-    - name: Create ansible user
+    - name: Create sudo account user
       with_items: "{{ conf_servicing_sudo_accounts }}"
       no_log: true
       ansible.builtin.user:
@@ -24,7 +24,7 @@
         groups:
           - sudo
 
-    - name: Set authorized keys taken from url
+    - name: Set authorized keys for sudo accounts
       with_items: "{{ conf_servicing_sudo_accounts }}"
       when: item.ssh_key_public is defined
       no_log: true
