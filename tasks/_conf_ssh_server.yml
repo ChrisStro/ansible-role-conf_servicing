@@ -1,0 +1,28 @@
+- name: Install openssh-server
+  ansible.builtin.apt:
+    name: openssh-server
+    state: present
+    update_cache: true
+  notify:
+    - Restart sshd
+
+- name: Create Hostkey 4096 bits rsa
+  community.crypto.openssh_keypair:
+    path: /etc/ssh/ssh_host_rsa_key
+
+- name: Create Hostkey ed25519
+  community.crypto.openssh_keypair:
+    path: /etc/ssh/ssh_host_ed25519_key
+    type: ed25519
+
+- name: Create additionally sshd config for security
+  ansible.builtin.copy:
+    dest: /etc/ssh/sshd_config.d/ansible_secured.conf
+    mode: "0644"
+    content: "{{ conf_servicing_service_sshd_conf }}"
+
+- name: Copy hardening file
+  ansible.builtin.copy:
+    dest: /etc/ssh/sshd_config.d/sshd_hardening.conf
+    mode: "0644"
+    src: sshd_hardening.conf

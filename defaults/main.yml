@@ -1,1 +1,9 @@
 conf_servicing_service_user_name: ansible
+
+conf_servicing_service_sshd_conf: |
+  AddressFamily inet
+  LogLevel VERBOSE
+  PermitRootLogin no
+  PermitEmptyPasswords no
+  PasswordAuthentication no
+  MaxAuthTries 3
