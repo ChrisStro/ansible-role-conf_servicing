@@ -3,6 +3,14 @@
     name: "{{ conf_servicing_service_user_name }}"
     system: true
 
+- name: Set authorized keys for sudo accounts
+  when: conf_servicing_service_key_public is defined
+  no_log: true
+  ansible.posix.authorized_key:
+    user: "{{ conf_servicing_service_user_name }}"
+    state: present
+    key: "{{ conf_servicing_service_key_public }}"
+
 - name: Create templated sudoers file for {{ conf_servicing_service_user_name }}
   ansible.builtin.template:
     src: debian.j2
@@ -23,6 +31,7 @@
         shell: /bin/bash
         groups:
           - sudo
+        append: true
 
     - name: Set authorized keys for sudo accounts
       with_items: "{{ conf_servicing_sudo_accounts }}"

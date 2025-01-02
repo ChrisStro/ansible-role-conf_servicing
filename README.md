@@ -8,6 +8,9 @@ For available variables see `defaults/main.yml`
 ```yaml
 conf_servicing_service_user_name: ansible
 
+# Add ssh pub key if needed
+conf_servicing_service_key_public: ssh-ed25519 AAA...
+
 # If you wish to create additionaly sudo accounts
 conf_servicing_sudo_accounts:
   - name: sudo1
