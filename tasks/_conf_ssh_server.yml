@@ -20,9 +20,13 @@
     dest: /etc/ssh/sshd_config.d/ansible_secured.conf
     mode: "0644"
     content: "{{ conf_servicing_service_sshd_conf }}"
+  notify:
+    - Restart sshd
 
 - name: Copy hardening file
   ansible.builtin.copy:
     dest: /etc/ssh/sshd_config.d/sshd_hardening.conf
     mode: "0644"
     src: sshd_hardening.conf
+  notify:
+    - Restart sshd
