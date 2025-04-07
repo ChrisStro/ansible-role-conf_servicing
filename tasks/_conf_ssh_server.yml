@@ -4,7 +4,7 @@
     state: present
     update_cache: true
   notify:
-    - Restart sshd
+    - Restart ssh
 
 - name: Create Hostkey 4096 bits rsa
   community.crypto.openssh_keypair:
@@ -21,7 +21,7 @@
     mode: "0644"
     content: "{{ conf_servicing_service_sshd_conf }}"
   notify:
-    - Restart sshd
+    - Restart ssh
 
 - name: Copy hardening file
   ansible.builtin.copy:
@@ -29,4 +29,4 @@
     mode: "0644"
     src: sshd_hardening.conf
   notify:
-    - Restart sshd
+    - Restart ssh
